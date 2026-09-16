@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morse</title>
+    <title>Sandi AZ</title>
     <style>
         /* Reset & Base Styles */
         * {
@@ -45,6 +45,11 @@
             font-weight: bold;
             font-size: 1.2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        header a {
+            text-decoration: none;
+            color: #121212;
         }
 
         /* Navigation Tabs */
@@ -107,37 +112,35 @@
             margin-bottom: 15px;
         }
 
-        /* Morse Table 4 Columns */
-        .morse-table {
+        /* Table Styles */
+        .an-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 25px;
             table-layout: fixed;
         }
 
-        .morse-table th, .morse-table td {
+        .an-table th, .an-table td {
             border: 1px solid #333;
             padding: 8px 4px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
-        .morse-table th {
+        .an-table th {
             background-color: #2d2d2d;
             color: #ff9f43;
         }
 
-        .morse-table tr:nth-child(even) {
+        .an-table tr:nth-child(even) {
             background-color: #252525;
         }
 
         .code {
             font-family: monospace;
             font-size: 1rem;
-            letter-spacing: 1px;
+            font-weight: bold;
             color: #00d2d3;
-            text-align: left;
-            padding-left: 8px;
         }
 
         /* Converter Styles */
@@ -186,36 +189,6 @@
             border-left: 4px solid #00d2d3;
         }
 
-        .morse-keyboard {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .key-btn {
-            background-color: #3d3d3d;
-            color: #fff;
-            border: 1px solid #555;
-            padding: 15px 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .key-btn:active {
-            background-color: #555;
-        }
-
-        .key-btn.clear {
-            grid-column: span 3;
-            font-size: 0.9rem;
-            padding: 8px 0;
-            background-color: #c0392b;
-            border-color: #a93226;
-        }
-
         /* Game Styles */
         .level-selection {
             display: flex;
@@ -250,10 +223,10 @@
         }
 
         .question-box {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
             margin: 20px 0;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: #00d2d3;
             min-height: 60px;
             word-break: break-all;
@@ -321,7 +294,7 @@
 <body>
 
     <div class="phone-container">
-        <header><a href="index.html"> ◀ </a> MORSE</header>
+        <header><a href="index.html"> ◀ </a> SANDI AZ</header>
         
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('materi')">Materi</button>
@@ -330,45 +303,30 @@
         </div>
 
         <div id="materi" class="content-section active">
-            <h2>Apa itu Sandi Morse?</h2>
-            <p>Morse adalah sistem komunikasi yang menggunakan kombinasi titik (.) dan garis (-) untuk mewakili huruf, angka, dan tanda baca. Diciptakan pada tahun 1830-an oleh Samuel F.B. Morse dan Alfred Vail, kode ini biasanya dikirim melalui telegraf, radio, kilatan cahaya, atau ketukan peluit.</p>
+            <h2>Apa itu Sandi AZ?</h2>
+            <p>Sandi A-Z (atau Sandi AZ) adalah sandi pengganti (substitusi) yang membagi 26 alfabet menjadi dua baris sejajar (masing-masing 13 huruf). Huruf <b>A-M</b> disusun berurutan dan dipasangkan dengan <b>Z-N</b> (N-Z dalam urutan terbalik).</p>
             
-            <h2>Kamus Huruf (A-Z)</h2>
-            <table class="morse-table">
-                <tbody id="table-letters"></tbody>
-            </table>
-
-            <h2>Kamus Angka (0-9)</h2>
-            <table class="morse-table">
-                <tbody id="table-numbers"></tbody>
-            </table>
-
-            <h2>Kamus Tanda Baca</h2>
-            <table class="morse-table">
-                <tbody id="table-punctuation"></tbody>
+            <h2>Kunci Pasangan Huruf</h2>
+            <table class="an-table">
+                <thead>
+                    <tr>
+                        <th>Baris 1</th>
+                        <th>Baris 2</th>
+                    </tr>
+                </thead>
+                <tbody id="table-an-keys"></tbody>
             </table>
         </div>
 
         <div id="converter" class="content-section">
-            <h2>Converter Morse</h2>
+            <h2>Converter Sandi AZ</h2>
             
             <div class="conv-group">
-                <label class="conv-label">1. KETIK TEKS ➔ JADI MORSE</label>
-                <textarea id="text-to-morse-input" class="conv-input" rows="2" placeholder="Input dengan keyboard" oninput="handleTextToMorse()"></textarea>
-                <div id="text-to-morse-output" class="conv-output">Output</div>
-            </div>
-
-            <div class="conv-group">
-                <label class="conv-label">2. KETUK TOMBOL MORSE ➔ JADI TEKS</label>
-                <div id="morse-buffer-display" class="conv-input" row="2" oninput="translateMorseToText()">Input dengan tombol di bawah</div>
-                <div id="morse-to-text-display" class="conv-output" style="color: #ff9f43; font-weight: bold; min-height: 35px; font-size:1rem;">Output</div>
+                <label class="conv-label">Ketik Teks / Sandi AZ di sini:</label>
+                <textarea id="an-input" class="conv-input" rows="4" placeholder="Ketik kalimat atau kode sandi AZ..." oninput="handleAnTranslate()"></textarea>
                 
-                <div class="morse-keyboard">
-                    <button class="key-btn" onclick="pressMorseKey('.')">.</button>
-                    <button class="key-btn" onclick="pressMorseKey('-')">-</button>
-                    <button class="key-btn" onclick="pressMorseKey('/')">/</button>
-                    <button class="key-btn clear" onclick="clearMorseConverter()">Hapus Semua Data</button>
-                </div>
+                <label class="conv-label" style="margin-top: 15px;">Hasil Terjemahan:</label>
+                <div id="an-output" class="conv-output">Output</div>
             </div>
         </div>
 
@@ -384,8 +342,8 @@
             </div>
             
             <div class="game-card">
-                <p id="game-instruction">Tebak huruf dari kode morse berikut:</p>
-                <div class="question-box" id="question">-</div>
+                <p id="game-instruction">Tebak huruf asli dari kode sandi AZ berikut:</p>
+                <div class="question-box" id="question">N</div>
                 <div class="options-container" id="options"></div>
                 <div class="feedback" id="feedback"></div>
                 <button class="reset-btn" onclick="resetGame()">Ulangi Game</button>
@@ -394,52 +352,50 @@
     </div>
 
     <script>
-        // Database Kode Morse Master
-        const morseLetters = {
-            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
-            'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 
-            'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 
-            'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 
-            'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..'
+        // Database Pasangan Sandi AZ
+        const anMap = {
+            'A': 'Z', 
+            'B': 'Y', 
+            'C': 'X', 
+            'D': 'W', 
+            'E': 'V', 
+            'F': 'U', 
+            'G': 'T',
+            'H': 'S', 
+            'I': 'R', 
+            'J': 'Q', 
+            'K': 'P', 
+            'L': 'O', 
+            'M': 'N',
+            'N': 'M', 
+            'O': 'L', 
+            'P': 'K', 
+            'Q': 'J', 
+            'R': 'I', 
+            'S': 'H', 
+            'T': 'G',
+            'U': 'F', 
+            'V': 'E', 
+            'W': 'D', 
+            'X': 'C', 
+            'Y': 'B', 
+            'Z': 'A'
         };
 
-        const morseNumbers = {
-            '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
-            '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----'
-        };
+        const wordBank = ["PRAMUKA", "SANDI", "TUNAS", "BUKIT", "KEMAH", "SINYAL", "PINTAR", "CEPAT", "LOGIKA", "REGU", "SIAGA", "PENGGALANG"];
 
-        const morsePunctuation = {
-            '.': '.-.-.-', ',': '--..--', '?': '..--..', '/': '-..-.', '-': '-....-',
-            '(': '-.--.', ')': '-.--.-', '@': '.--.-.', '=': '-...-', '!': '-.-.--'
-        };
-
-        // Gabungkan seluruh database untuk keperluan dekoder balik (Morse -> Teks)
-        const fullMorseDatabase = { ...morseLetters, ...morseNumbers, ...morsePunctuation };
-        
-        // Buat mapping terbalik: {'.-': 'A', '-...': 'B', dst}
-        const reverseMorseDatabase = {};
-        for (let key in fullMorseDatabase) {
-            reverseMorseDatabase[fullMorseDatabase[key]] = key;
-        }
-
-        const wordBank = ["PRAMUKA", "SANDI", "MORSE", "RADIO", "KODE", "TUNAS", "BUKIT", "KEMAH", "SINYAL", "PINTAR", "CEPAT", "LOGIKA"];
-
-        // Render Kamus 4 Kolom
-        function renderFourColumnTable(data, tableId) {
-            const tbody = document.getElementById(tableId);
-            const keys = Object.keys(data);
+        // Render Tabel Pasangan Kunci AN
+        function renderAnTable() {
+            const tbody = document.getElementById('table-an-keys');
             let htmlResult = '';
-            for (let i = 0; i < keys.length; i += 2) {
-                let char1 = keys[i]; let code1 = data[char1];
-                let char2 = keys[i+1] ? keys[i+1] : '';
-                let code2 = keys[i+1] ? data[char2] : '';
-                htmlResult += `<tr><td style="width:15%"><b>${char1}</b></td><td class="code" style="width:35%">${code1}</td><td style="width:15%"><b>${char2}</b></td><td class="code" style="width:35%">${code2}</td></tr>`;
-            }
+            const keys = ['A','B','C','D','E','F','G','H','I','J','K','L','M'];
+            
+            keys.forEach(char => {
+                htmlResult += `<tr><td><b>${char}</b></td><td class="code">${anMap[char]}</td></tr>`;
+            });
             tbody.innerHTML = htmlResult;
         }
-        renderFourColumnTable(morseLetters, 'table-letters');
-        renderFourColumnTable(morseNumbers, 'table-numbers');
-        renderFourColumnTable(morsePunctuation, 'table-punctuation');
+        renderAnTable();
 
         // Tab Switcher
         function switchTab(tabId) {
@@ -454,65 +410,24 @@
             }
         }
 
-        /* ---------------- INTERATIVE CONVERTER LOGIC ---------------- */
-        
-        // 1. Logika Teks -> Morse
-        function handleTextToMorse() {
-            const inputText = document.getElementById('text-to-morse-input').value;
-            const outputBox = document.getElementById('text-to-morse-output');
+        /* ---------------- INTERACTIVE CONVERTER LOGIC ---------------- */
+        function convertAN(text) {
+            return text.toUpperCase().split('').map(char => {
+                return anMap[char] || char; // Mengubah huruf sesuai kamus, mengabaikan angka/simbol/spasi
+            }).join('');
+        }
+
+        function handleAnTranslate() {
+            const inputText = document.getElementById('an-input').value;
+            const outputBox = document.getElementById('an-output');
             
             if (!inputText.trim()) {
                 outputBox.innerText = "Output";
                 return;
             }
 
-            let result = inputText.toUpperCase().split('').map(char => {
-                if (char === ' ') return ' // '; // Pemisah spasi kata
-                return fullMorseDatabase[char] || '?'; // Ambil kode atau tanda tanya jika tidak ada
-            }).join('/');
-
-            // Merapikan tumpukan garis miring berlebih jika user tidak sengaja double spasi
-            result = result.replace(/\/ \//g, '/').replace(/\s+/g, ' ');
-            outputBox.innerText = result;
+            outputBox.innerText = convertAN(inputText);
         }
-
-        // 2. Logika Tombol Layar Morse -> Teks
-        let currentMorseInputString = "";
-
-        function pressMorseKey(char) {
-            currentMorseInputString += char;
-            document.getElementById('morse-buffer-display').innerText = currentMorseInputString;
-            translateMorseToText();
-        }
-
-        function translateMorseToText() {
-            const displayBox = document.getElementById('morse-to-text-display');
-            
-            if (!currentMorseInputString.trim()) {
-                displayBox.innerText = "[Hasil teks di sini]";
-                return;
-            }
-
-            // Pisahkan input berdasarkan tanda "/" untuk mendeteksi setiap huruf
-            let lettersArray = currentMorseInputString.split('/');
-            
-            let decodedText = lettersArray.map(morseCode => {
-                let trimmedCode = morseCode.trim();
-                if (trimmedCode === "") return " "; // jika spasi kosong, kembalikan spasi kalimat
-                return reverseMorseDatabase[trimmedCode] || '_'; // Jika kode belum lengkap tampilkan underscore (_)
-            }).join('');
-
-            displayBox.innerText = decodedText;
-        }
-
-        function clearMorseConverter() {
-            currentMorseInputString = "";
-            document.getElementById('text-to-morse-input').value = "";
-            document.getElementById('text-to-morse-output').innerText = "Output";
-            document.getElementById('morse-buffer-display').innerText = "Input dengan tombol di bawah";
-            document.getElementById('morse-to-text-display').innerText = "Output";
-        }
-
 
         /* ---------------- GAME QUIZ LOGIC ---------------- */
         let currentLevel = 'huruf';
@@ -546,10 +461,10 @@
             let questionDisplay = '';
 
             if (currentLevel === 'huruf') {
-                document.getElementById('game-instruction').innerText = "Tebak HURUF dari kode morse berikut:";
-                const letters = Object.keys(morseLetters);
+                document.getElementById('game-instruction').innerText = "Tebak HURUF ASLI dari kode Sandi AZ berikut:";
+                const letters = Object.keys(anMap);
                 correctAnswer = letters[Math.floor(Math.random() * letters.length)];
-                questionDisplay = morseLetters[correctAnswer];
+                questionDisplay = anMap[correctAnswer]; // Tampilkan kode AN nya
                 
                 options = [correctAnswer];
                 while (options.length < 4) {
@@ -557,9 +472,9 @@
                     if (!options.includes(rand)) options.push(rand);
                 }
             } else {
-                document.getElementById('game-instruction').innerText = "Tebak KATA dari kode morse berikut:";
+                document.getElementById('game-instruction').innerText = "Tebak KATA ASLI dari kode Sandi AZ berikut:";
                 correctAnswer = wordBank[Math.floor(Math.random() * wordBank.length)];
-                questionDisplay = correctAnswer.split('').map(char => morseLetters[char] || '').join(' / ');
+                questionDisplay = convertAN(correctAnswer); // Enkripsi kata asli ke Sandi AZ
                 
                 options = [correctAnswer];
                 while (options.length < 4) {
@@ -626,5 +541,6 @@
             }, true);
         })();
     </script>
+
 </body>
 </html>
